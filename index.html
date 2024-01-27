@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Timer</title>
+</head>
+<body>
+
+<div class="gradient">
+    <div class="container">
+        <div class="title">До зустрічі залишилося:</div>
+        <div class="timer">
+            <span class="d">00</span>
+            <span class="h">00</span>
+            <span class="m">00</span>
+            <span class="s">00</span>
+        </div>
+        <div class="wish">Я люблю тебе кицю <span class="heart">❤</span></div>
+    </div>
+</div>
+    <script>
+        let needDate = new Date("Feb 6 2024 09:11:00")
+
+        function timerCount(){
+            let nowDate = new Date();
+            let gap = needDate - nowDate;
+            console.log(gap);
+
+            let days = Math.floor(gap / 1000 / 60 / 60 / 24);
+            let hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            let minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((gap % (1000 * 60)) / 1000);
+
+            document.querySelector(".d").innerText = days < 10 ? '0' + days : days;
+            document.querySelector(".h").innerText = hours < 10 ? '0' + hours : hours;
+            document.querySelector(".m").innerText = minutes < 10 ? '0' + minutes : minutes;
+            document.querySelector(".s").innerText = seconds < 10 ? '0' + seconds : seconds;
+        }
+        timerCount();
+
+        setInterval(timerCount, 1000);
+    </script>
+</body>
+</html>
